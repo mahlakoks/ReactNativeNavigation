@@ -1,15 +1,15 @@
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import Home from "../screens/Home";
-import ReviewDetails from "../screens/reviewDetails";
+import About from "../screens/about";
 
 const Stack = createStackNavigator();
 
 export default function Navigator() {
   return (
-   // <NavigationContainer>
+    //<NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="About"
         screenOptions={{
           headerStyle: { backgroundColor: "lightgreen" },
           headerTintColor: "white",
@@ -17,20 +17,13 @@ export default function Navigator() {
         }}
       >
         <Stack.Screen
-          name="Home"
-          component={Home}
+          name="About"
+          component={About}
           options={{
-            headerTitle: "GameZone",
-          }}
-        />
-        <Stack.Screen
-          name="ReviewDetails"
-          component={ReviewDetails}
-          options={{
-            headerTitle: "Reviews",
+            headerTitle: "About GameZone",
           }}
         />
       </Stack.Navigator>
-   // </NavigationContainer>
+    //</NavigationContainer>
   );
 }
