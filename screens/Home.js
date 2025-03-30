@@ -27,6 +27,8 @@ import {
   FlatList,
   TouchableOpacity,
   Modal,
+  TouchableWithoutFeedback,
+  Keyboard
 } from "react-native";
 import { globalStyles } from "../styles/global";
 import Card from "./shared/card";
@@ -49,9 +51,19 @@ export default function Home({ navigation }) {
     setModalDisplay(value);
   }
 
+  const addReview = (review) => {
+    review.key = Math.random().toString()
+    setReviews((currentReviews) => {
+      return [review, ...currentReviews];
+    });
+    setModalDisplay(false);
+  }
+
   return (
     <View style={globalStyles.container}>
       <Modal visible={modalDisplay} animationType="slide">
+
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={Styles.modalContent}>
           <MaterialIcons
             name="close"
@@ -62,8 +74,9 @@ export default function Home({ navigation }) {
             }}
           />
           {/* // <Text style={Styles.modal}>Are you old enough to play?</Text> */}
-          <ReviewForm />
+          <ReviewForm addReview={addReview} />
         </View>
+      </TouchableWithoutFeedback>
       </Modal>
 
       <MaterialIcons

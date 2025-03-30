@@ -3,17 +3,19 @@ import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { globalStyles } from "../styles/global";
 import { Formik } from "formik";
 
-export default function ReviewForm() {
+export default function ReviewForm({ addReview }) {
   return (
     <View style={globalStyles.container}>
       <Formik
         initialValues={{
-          title: '',
-          body: '',
-          rating:''
+          title: "",
+          body: "",
+          rating: "",
         }}
-        onSubmit={(values) => {
-          console.log(values)
+        onSubmit={(values, actions) => {
+         actions.resetForm(); //Automatically crears the form
+         addReview(values);
+         // console.log(values)
         }}
       >
         {(props) => (
@@ -21,31 +23,29 @@ export default function ReviewForm() {
             <TextInput
               style={globalStyles.input}
               placeholder="Review Title"
-              onChangeText={props.handleChange('title')}
+              onChangeText={props.handleChange("title")}
               value={props.values.title}
-            />   
+            />
 
             <TextInput
               multiline
               style={globalStyles.input}
               placeholder="Review body"
-              onChangeText={props.handleChange('body')}
+              onChangeText={props.handleChange("body")}
               value={props.values.body}
-            />    
+            />
 
-             <TextInput
+            <TextInput
               style={globalStyles.input}
               placeholder="Rating 1-5"
-              onChangeText={props.handleChange('rating')}
+              onChangeText={props.handleChange("rating")}
               value={props.values.rating}
               keyboardType="numeric"
-            />    
-           <Button title="SUBMIT" color='red' onSubmit={props.handleSubmit} />
+            />
+            <Button title="SUBMIT" color="red" onPress={props.handleSubmit} />
           </View>
-          
         )}
       </Formik>
     </View>
-  )
-  
+  );
 }
