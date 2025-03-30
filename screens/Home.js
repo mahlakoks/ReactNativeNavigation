@@ -31,6 +31,7 @@ import {
 import { globalStyles } from "../styles/global";
 import Card from "./shared/card";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import ReviewForm from "./reviewForms";
 
 export default function Home({ navigation }) {
   const [reviews, setReviews] = useState([
@@ -50,20 +51,19 @@ export default function Home({ navigation }) {
 
   return (
     <View style={globalStyles.container}>
-
       <Modal visible={modalDisplay} animationType="slide">
-        <View>
-        <MaterialIcons
-          name="close"
-          style={{...Styles.modalToggle,...Styles.modalClose}}
-          size={24}
-          onPress={() => {
-            setModalOpen(false);
-          }}
-        />
-        <Text style={Styles.modal}>Are you old enough to play?</Text>
+        <View style={Styles.modalContent}>
+          <MaterialIcons
+            name="close"
+            style={{ ...Styles.modalToggle, ...Styles.modalClose }}
+            size={24}
+            onPress={() => {
+              setModalOpen(false);
+            }}
+          />
+          {/* // <Text style={Styles.modal}>Are you old enough to play?</Text> */}
+          <ReviewForm />
         </View>
-      
       </Modal>
 
       <MaterialIcons
@@ -103,10 +103,10 @@ const Styles = StyleSheet.create({
     borderColor: "red",
     padding: 10,
     borderRadius: 10,
-    alignSelf:'center',
+    alignSelf: "center",
   },
   modalClose: {
     marginTop: 40,
-    marginBottom:10,
-  }
+    marginBottom: 10,
+  },
 });
