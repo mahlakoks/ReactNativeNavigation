@@ -24,7 +24,7 @@ export default function App() {
         }}
       >
         <Drawer.Screen 
-          name="GamingTest" 
+          name="Home" 
           component={HomeStack}
           options={{
             drawerIcon: ({ color }) => (
