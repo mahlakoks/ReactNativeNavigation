@@ -19,7 +19,7 @@ export default function Home({ navigation }) {
 }
 */
 
-import React,{useState} from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   View,
@@ -28,16 +28,16 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { globalStyles } from "../styles/global";
+import Card from "./shared/card";
 
 export default function Home({ navigation }) {
   const [reviews, setReviews] = useState([
-    { title: "number1", rating: 5, body: "lorem ipsum", key: "1" },
-    { title: "number0", rating: 4, body: "lorem ipsum", key: "0" },
+    { title: "number1", rating: 5, body: "lorem ipsum", key: "0" },
+    { title: "number0", rating: 4, body: "lorem ipsum", key: "1" },
     { title: "number2", rating: 3, body: "lorem ipsum", key: "2" },
-    { title: "number3", rating: 2, body: "lorem ipsum", key: "3" },
-    { title: "number4", rating: 1, body: "lorem ipsum", key: "4" },
-    { title: "number5", rating: 0, body: "lorem ipsum", key: "5" },
-    { title: "number6", rating: 9, body: "lorem ipsum", key: "6" },
+    { title: "number4", rating: 1, body: "lorem ipsum", key: "3" },
+    { title: "number5", rating: 2, body: "lorem ipsum", key: "4" },
+    { title: "number6", rating: 3, body: "lorem ipsum", key: "5" },
   ]);
 
   return (
@@ -48,9 +48,11 @@ export default function Home({ navigation }) {
           <TouchableOpacity
             onPress={() => navigation.navigate("ReviewDetails", item)}
           >
-          <Text style={globalStyles.titleText}>{item.title}</Text>
+            <Card>
+              <Text style={globalStyles.titleText}>{item.title}</Text>
+            </Card>
           </TouchableOpacity>
-  )}
+        )}
       />
     </View>
   );
