@@ -1,9 +1,6 @@
+# Drawer Navigation
 
-#Drawer Navigation:
+To install the drawer navigation, run the following command:
+
+```bash
 npm install @react-navigation/drawer
-
- ### React Navigation 5 and later are using NavigationContainer to wrap your navigators.
-
- test conversional commit
-
- #Working with Forms
